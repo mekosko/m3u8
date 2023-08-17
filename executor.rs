@@ -10,6 +10,13 @@ pub async fn get(State(environment): State<Environment>) -> Result<impl IntoResp
 	for target in targets {
 		components.push(target.file_name().into_string().unwrap());
 	}
+	let mut playlist = String::new();
 
-	Ok(format!("{:?}", components))
+	for component in components {
+		playlist.push_str(environment.locate.as_str());
+		playlist.push_str(component.as_str());
+		playlist.push('\n');
+	}
+
+	Ok(playlist)
 }
