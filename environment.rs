@@ -1,10 +1,9 @@
-use serde::Deserialize;
+use {serde::Deserialize, std::net::SocketAddr};
 
 #[derive(Debug, Deserialize)]
 pub struct Environment {
 	pub locate: String,
-	pub target: String,
-	pub at: String,
+	pub at: SocketAddr,
 }
 
 impl From<String> for Environment {

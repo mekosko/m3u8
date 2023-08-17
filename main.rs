@@ -13,9 +13,7 @@ async fn main() {
 
 	let app = Router::new().route("/", get(executor::get)).with_state(environment.clone());
 
-	let out = axum::Server::bind(&environment.at.parse().unwrap())
-		.serve(app.into_make_service())
-		.await;
+	let out = axum::Server::bind(&environment.at).serve(app.into_make_service()).await;
 
 	out.unwrap();
 
