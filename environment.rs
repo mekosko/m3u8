@@ -1,14 +1,14 @@
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
-pub struct Environment<'a> {
-	locate: &'a str,
-	target: &'a str,
-	listen: &'a str,
+pub struct Environment {
+	pub locate: String,
+	pub target: String,
+	pub listen: String,
 }
 
-impl<'a> From<&'a str> for Environment<'a> {
-	fn from(value: &'a str) -> Self {
-		serde_json::from_str(value).unwrap()
+impl From<String> for Environment {
+	fn from(value: String) -> Self {
+		serde_json::from_str(value.as_str()).unwrap()
 	}
 }
