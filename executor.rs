@@ -3,11 +3,13 @@ use axum::{extract::State, http::StatusCode, response::IntoResponse};
 type Environment = std::sync::Arc<crate::environment::Environment>;
 
 pub async fn get(State(environment): State<Environment>) -> Result<impl IntoResponse, StatusCode> {
-	let paths = std::fs::read_dir("template").unwrap();
+	let mut components = Vec::new();
 
-	for path in paths {
-		println!("{:?}", path.unwrap());
+	let targets = std::fs::read_dir(&environment.target).unwrap().map(|target| target.unwrap());
+
+	for target in targets {
+		components.push(target.file_name().into_string().unwrap());
 	}
 
-	Ok(format!("{:?}", environment))
+	Ok(format!("{:?}", components))
 }

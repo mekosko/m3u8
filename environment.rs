@@ -1,6 +1,6 @@
-use std::net::SocketAddr;
+use {serde::Deserialize, std::net::SocketAddr};
 
-#[derive(serde::Deserialize)]
+#[derive(Deserialize)]
 struct RawData {
 	socket: Vec<String>,
 	locate: Vec<String>,
