@@ -1,4 +1,15 @@
 {
-    "locate": "http://localhost/template/",
-    "at": "127.0.0.1:8080"
+    "socket": [
+        "127.0.0.1",
+        "8080"
+    ],
+    "locate": [
+        "http",
+        "localhost",
+        "template"
+    ],
+    "target": [
+        "0",
+        "template"
+    ]
 }
