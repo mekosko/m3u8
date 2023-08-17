@@ -4,7 +4,7 @@ use serde::Deserialize;
 pub struct Environment {
 	pub locate: String,
 	pub target: String,
-	pub listen: String,
+	pub at: String,
 }
 
 impl From<String> for Environment {
